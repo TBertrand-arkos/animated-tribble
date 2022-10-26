@@ -2,6 +2,8 @@
 
 namespace Hackathon\LevelK;
 
+use Error;
+
 class Brute
 {
     private $hash;
@@ -21,7 +23,34 @@ class Brute
      */
     public function force()
     {
-
-        // @TODO
+        $methods = array('md5', 'crc32', 'base64', 'sha1');
+        for ($m = 0; $m < count($methods); $m++) {
+            $str = 'aaaa';
+            $this->method = $methods[$m];
+            while ($str !== 'zzzz') {
+                if ($this->method === 'md5') {
+                    if (md5($str) === $this->hash) {
+                        $this->origin = $str;
+                        return;
+                    }
+                } elseif ($this->method === 'crc32') {
+                    if (crc32($str) == $this->hash) {
+                        $this->origin = $str;
+                        return;
+                    }
+                } elseif ($this->method === 'base64') {
+                    if (base64_encode($str) === $this->hash) {
+                        $this->origin = $str;
+                        return;
+                    }
+                } else {
+                    if (sha1($str) === $this->hash) {
+                        $this->origin = $str;
+                        return;
+                    }
+                }
+                $str++;
+            }
+        }
     }
 }
