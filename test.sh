@@ -85,9 +85,9 @@ if [ $LEVELN = 0 ]; then
         SCORE=$((SCORE+70));
 fi
 
-./phpunit LevelN;
+./phpunit LevelO;
 LEVELN=$?;
-if [ $LEVELN = 0 ]; then
+if [ $LEVELO = 0 ]; then
         SCORE=$((SCORE+25));
 fi
 
