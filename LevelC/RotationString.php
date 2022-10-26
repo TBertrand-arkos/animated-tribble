@@ -17,8 +17,6 @@ class RotationString
         if (strlen($s1) != strlen($s2))
             return false;
 
-        // concatenate $string1 to itself, if both
-        // strings are of same length
         if (strlen($s1) == strlen($s2))
             $s1 = $s1 . $s1;
 
@@ -26,8 +24,6 @@ class RotationString
             return true;
         else
             return false;
-
-        return false;
     }
 
     public static function isSubString($s1, $s2)
