@@ -14,7 +14,18 @@ class RotationString
      */
     public static function isRotation($s1, $s2)
     {
-        /** @TODO */
+        if (strlen($s1) != strlen($s2))
+            echo "No";
+
+        // concatenate $string1 to itself, if both
+        // strings are of same length
+        if (strlen($s1) == strlen($s2))
+            $s1 = $s1 . $s1;
+
+        if (strpos($s1, $s2) > 0)
+            return true;
+        else
+            return false;
 
         return false;
     }
