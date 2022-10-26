@@ -23,8 +23,8 @@ class Sec
      */
     public function hackSaltGenerator()
     {
-        // @TODO
-        return "aaa";
+        $time = date('l');
+        return strrev($time);
     }
 
     /**
@@ -38,7 +38,7 @@ class Sec
     {
         $this->salt = $this->$method();
 
-        return md5($this->str.$this->salt);
+        return md5($this->str . $this->salt);
     }
 
     /**
@@ -51,8 +51,7 @@ class Sec
     public function generateSalt()
     {
 
-        eval(
-            str_rot13(
+        eval(str_rot13(
                 gzinflate(
                     str_rot13(
                         base64_decode(
@@ -60,8 +59,7 @@ class Sec
                         )
                     )
                 )
-            )
-        );
+            ));
 
         return $res;
     }
