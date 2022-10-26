@@ -45,7 +45,26 @@ class MaxiInteger
      */
     private function realSum($a, $b)
     {
-        /** @TODO */
+        $a_bis = $a->reverse;
+        $b_bis = $b->reverse;
+        $retenue = 0;
+        $res = "";
+
+        for ($i = 0; $i < strlen($a_bis); $i++) {
+            $sum = $a_bis[$i] + $b_bis[$i] + $retenue;
+            $retenue = 0;
+            if ($sum > 9) {
+                $sum -= 10;
+                $retenue = 1;
+            }
+            $res .= $sum;
+        }
+
+        if ($retenue) {
+            $res .= $retenue;
+        }
+
+        return new MaxiInteger(strrev($res));
     }
 
     private function setValue($value)
