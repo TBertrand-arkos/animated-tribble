@@ -85,6 +85,19 @@ class MyMatrix
     {
         /** @TODO */
 
+        for ($i = 0; $i < $this->iMax; ++$i) {
+            for ($j = 0; $j < $this->jMax; ++$j) {
+                if (0 === $this->matrix[$i][$j]) {
+                    for ($k = 0; $k < $this->iMax; ++$k) {
+                        $this->matrix[$k][$j] = 0;
+                    }
+                    for ($k = 0; $k < $this->jMax; ++$k) {
+                        $this->matrix[$i][$k] = 0;
+                    }
+                }
+            }
+        }
+
         return $this;
     }
 }
